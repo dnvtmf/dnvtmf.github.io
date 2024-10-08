@@ -1,0 +1,279 @@
+<!doctype html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- bulma css template -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <!-- ionicons -->
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <!-- model viewer -->
+    <!--  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/3.1.1/model-viewer.min.js"></script>-->
+    <link rel="stylesheet" href="../static/css/bulma.min.css">
+    <link rel="stylesheet" href="../static/css/bulma-carousel.min.css">
+    <link rel="stylesheet" href="../static/css/bulma-slider.min.css">
+    <link rel="stylesheet" href="../static/css/fontawesome.all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script defer src="../static/js/fontawesome.all.min.js"></script>
+    <script src="../static/js/bulma-carousel.min.js"></script>
+    <script src="../static/js/bulma-slider.min.js"></script>
+    <script src="../static/js/index.js"></script>
+    <style>
+        .speed_table {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+        .speed_table th, td {
+            border: 1px solid black;
+        }
+
+        .speed_table td, th {
+            text-align: center;
+            padding-left: 15px;
+            padding-right: 15px;
+        }
+
+
+        .speed_table tcaption {
+            text-align: center;
+        }
+
+        td.best {
+            background: orange;
+        }
+    </style>
+    <title>
+        SP-GS
+    </title>
+</head>
+<body>
+
+<!--title-->
+<section class="section">
+
+    <div class="container has-text-centered">
+        <!-- paper title -->
+        <p class="title is-3">Template-free Articulated Gaussian Splatting for Real-time Reposable Dynamic View
+            Synthesis</p>
+        <!-- publication -->
+        <p class="subtitle is-4"> NuerIPS 2024 </p>
+        <p class="title is-5 mt-2">
+            <a href="https://github.com/dnvtmf/" target="_blank">Diwen Wan</a><sup>1</sup>,
+            Yuxiang Wang<sup>1</sup>,
+            <!--            <a href="" target="_blank"> Yuxiang Wang</a><sup>1</sup>,-->
+            Ruijie Lu<sup>1</sup>,
+            <!--            <a href="" target="_blank"> Ruijie Lu</a><sup>1</sup>,-->
+            <a href="http://www.cis.pku.edu.cn/info/1177/1378.htm" target="_blank">Gang Zeng</a><sup>1</sup>,
+        </p>
+        <!-- affiliations -->
+        <p class="subtitle is-5">
+            <sup>1</sup> National Key Laboratory of General Artificial Intelligence, School of IST, Peking University,
+            China
+        </p>
+        <!-- other links -->
+        <div class="is-flex is-justify-content-center">
+      <span class="icon-text mx-1">
+        <a class="button is-dark" href="https://arxiv.org/abs/2406.03697" role="button" target="_blank"> <span
+                class="icon"> <ion-icon name="document-outline"></ion-icon> </span> <span> Arxiv </span>  </a>
+      </span>
+            <span class="icon-text mx-1">
+        <a class="button is-dark" href="https://github.com/dnvtmf/SK_GS" role="button" target="_blank"> <span
+                class="icon"> <ion-icon name="logo-github"></ion-icon> </span> <span> Code </span> </a>
+      </span>
+            <!--      <span class="icon-text mx-1">-->
+            <!--        <a class="button is-dark" href="https://huggingface.co/spaces/ashawkey/LGM" role="button" target="_blank"> <span class="icon"> <ion-icon name="logo-apple-ar"></ion-icon> </span> <span> Demo </span> </a>-->
+            <!--      </span>-->
+        </div>
+
+    </div>
+
+    <!-- main container -->
+    <div class="container is-max-desktop has-text-centered">
+
+        <!-- abstract -->
+        <p class="title is-3 mt-5 has-text-centered"> Abstract </p>
+        <p class="content is-size-6 has-text-left">
+            While novel view synthesis for dynamic scenes has made significant progress, capturing skeleton models of
+            objects and re-posing them remains a challenging task. To tackle this problem, in this paper, we propose a
+            novel approach to automatically discover the associated skeleton model for dynamic objects from videos
+            without the need for object-specific templates. Our approach utilizes 3D Gaussian Splatting and superpoints
+            to reconstruct dynamic objects. Treating superpoints as rigid parts, we can discover the underlying skeleton
+            model through intuitive cues and optimize it using the kinematic model. Besides, an adaptive control
+            strategy is applied to avoid the emergence of redundant superpoints. Extensive experiments demonstrate the
+            effectiveness and efficiency of our method in obtaining re-posable 3D objects. Not only can our approach
+            achieve excellent visual fidelity, but it also allows for the real-time rendering of high-resolution images.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container is-max-desktop has-text-centered">
+        <p class="title is-3 mt-5 has-text-centered"> Method </p>
+        <img src="./images/pipeline.svg" class="center" width="100%" alt="">
+        <p class="content is-size-6 has-text-left">
+            The pipeline of proposed approach. Our approach follows a two-stage training strategy. In the first stage
+            (i.e., <i>dynamic</i> stage), we learn the 3D Gaussians and superpoints to reconstruct the appearance. Each
+            superpoint is associated with a rigid part, and the adaptive control strategy is used to control the count.
+            After finishing the training of <i>dynamic</i> stage, we can discover the skeleton model based on
+            superpoints. After we finish the second stage (i.e., <i>kinematic</i> stage), we can obtain an articulated
+            model based on the kinematic model.
+        </p>
+    </div>
+</section>
+
+<!--results-->
+<!--<section class="section">-->
+<!--    <a id="results"></a>-->
+<!--    <p class="title is-3 mt-5 has-text-centered"> Video Results </p>-->
+<!--    &lt;!&ndash;    D-NeRF&ndash;&gt;-->
+<!--    <section class="hero is-light is-small">-->
+<!--        <div class="hero-body" id="D-NeRF">-->
+<!--            <div class="container is-max-desktop">-->
+<!--                <h2 class="title is-3">D-NeRF Datasets</h2>-->
+<!--                <div id="results-carousel" class="carousel results-carousel">-->
+
+<!--                    <div class="item item-mutant-tp">-->
+<!--                        <video poster="" id="mutant" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="/videos/mutant.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+
+<!--                    <div class="item item-trex">-->
+<!--                        <video poster="" id="trex" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/trex.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+
+<!--                    <div class="item item-hellwarrior">-->
+<!--                        <video poster="" id="hellwarrior" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/hellwarrior.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                    <div class="item item-hook">-->
+<!--                        <video poster="" id="hook" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/hook.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+
+<!--                    <div class="item item-lego">-->
+<!--                        <video poster="" id="lego" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/lego.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+
+<!--                    <div class="item item-standup">-->
+<!--                        <video poster="" id="standup" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/standup.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                    <div class="item item-bouncingballs">-->
+<!--                        <video poster="" id="bouncingballs" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/bouncingballs.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                    <div class="item item-jumpingjacks">-->
+<!--                        <video poster="" id="jumpingjacks" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/jumpingjacks.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    &lt;!&ndash;    NeRF-DS&ndash;&gt;-->
+<!--    <section class="hero is-light is-small">-->
+<!--        <div class="hero-body" id="NeRF-DS">-->
+<!--            <div class="container is-max-desktop">-->
+<!--                <h2 class="title is-3">NeRF-DS Datasets</h2>-->
+<!--                <div class="carousel results-carousel">-->
+
+<!--                    <div class="item item-as">-->
+<!--                        <video poster="" id="as" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="/videos/as.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+
+<!--                    <div class="item item-basin">-->
+<!--                        <video poster="" id="basin" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/basin.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+
+<!--                    <div class="item item-bell">-->
+<!--                        <video poster="" id="bell" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/bell.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                    <div class="item item-cup">-->
+<!--                        <video poster="" id="cup" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/cup.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+
+<!--                    <div class="item item-plate">-->
+<!--                        <video poster="" id="plate" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/plate.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+
+<!--                    <div class="item item-press">-->
+<!--                        <video poster="" id="press" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/press.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                    <div class="item item-sieve">-->
+<!--                        <video poster="" id="sieve" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/sieve.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--    &lt;!&ndash;    HyperNeRF&ndash;&gt;-->
+<!--    <section class="hero is-light is-small">-->
+<!--        <div class="hero-body" id="HyperNeRF">-->
+<!--            <div class="container is-max-desktop">-->
+<!--                <h2 class="title is-3">HyperNeRF Datasets</h2>-->
+<!--                <div class="columns">-->
+<!--                    <div class="column">-->
+<!--                        <video poster="" id="chicken" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/vrig-chicken.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                    <div class="column">-->
+<!--                        <video poster="" id="3dprinter" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="/videos/vrig-3dprinter.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                    <div class="column">-->
+<!--                        <video poster="" id="banana" autoplay controls muted loop playsinline height="100%">-->
+<!--                            <source src="./videos/vrig-peel-banana.mp4" type="video/mp4">-->
+<!--                        </video>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--</section>-->
+
+
+<section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+        <h2 class="title">BibTeX</h2>
+        <pre><span class="copy-block" onclick="copyBlock(this)"><ion-icon name="copy-outline"></ion-icon></span><code>@InProceedings{SK-GS,
+  title = 	 {Template-free Articulated Gaussian Splatting for Real-time Reposable Dynamic View Synthesis},
+  author =       {Wan, Diwen and Wang, Yuxiang and Lu, Ruijie and Zeng, Gang},
+  booktitle = 	 {NeurIPS},
+  year = 	 {2024},
+}</code></pre>
+    </div>
+</section>
+
+</body>
+</html>
